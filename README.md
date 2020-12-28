@@ -1,4 +1,4 @@
-# lottery-for-laravel
+## lottery-for-laravel
 
 > ##### laravel版composer抽奖程序插件，包含服务端和前端html(vue和js版大转盘)
 
