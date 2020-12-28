@@ -11,8 +11,7 @@ export default {
   // 活动详情接口
   activityInfo: function (activityId) {
     return axios.get('/lottery/activityInfo/?' + activityId);
-  },
-  
+  },
   // 抽奖动作接口
   lottery: function (activityId) {
     return axios.get('/lottery/index/?' + activityId)

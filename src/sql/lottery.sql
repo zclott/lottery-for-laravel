@@ -76,7 +76,7 @@ CREATE TABLE `db_lott_prize` (
 
 LOCK TABLES `db_lott_prize` WRITE;
 /*!40000 ALTER TABLE `db_lott_prize` DISABLE KEYS */;
-INSERT INTO `db_lott_prize` VALUES (1,1,'京东卡100元','./images/redpacket.png',5,5,0,1,1608372318,1),(2,1,'话费10元','./images/redpacket.png',50,16,30,1,1608372318,2),(3,1,'ipad mini 4','./images/redpacket.png',0,0,0,1,1608372318,3),(4,1,'谢谢参与','./images/redpacket.png',0,0,50,0,1608372318,4),(5,1,'话费30元','./images/redpacket.png',20,12,10,1,1608372318,5),(6,1,'话费50元','./images/redpacket.png',0,0,0,1,1608372318,6),(7,2,'话费50元','',10,0,10,1,1608372318,1),(8,2,'话费10元','',20,1,20,1,1608372318,2),(9,2,'流量10M','',30,0,60,1,1608372318,3),(10,2,'流量100M','',10,0,10,1,1608372318,4);
+INSERT INTO `db_lott_prize` VALUES (1,1,'京东卡100元','http://www.qiangbus.com/res/images/redpacket.png',5,5,0,1,1608372318,1),(2,1,'话费10元','http://www.qiangbus.com/res/images/redpacket.png',50,16,30,1,1608372318,2),(3,1,'ipad mini 4','http://www.qiangbus.com/res/images/redpacket.png',0,0,0,1,1608372318,3),(4,1,'谢谢参与','http://www.qiangbus.com/res/images/redpacket.png',0,0,50,0,1608372318,4),(5,1,'话费30元','http://www.qiangbus.com/res/images/redpacket.png',20,12,10,1,1608372318,5),(6,1,'话费50元','http://www.qiangbus.com/res/images/redpacket.png',0,0,0,1,1608372318,6),(7,2,'话费50元','',10,0,10,1,1608372318,1),(8,2,'话费10元','',20,1,20,1,1608372318,2),(9,2,'流量10M','',30,0,60,1,1608372318,3),(10,2,'流量100M','',10,0,10,1,1608372318,4);
 /*!40000 ALTER TABLE `db_lott_prize` ENABLE KEYS */;
 UNLOCK TABLES;
 
