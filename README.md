@@ -48,6 +48,8 @@ $app->register(Zclott\Lottery\LotteryServiceProvider::class);
 $ php artisan vendor:publish --provider=" Zclott\Lottery\LotteryServiceProvider"
 ```
 
+![image](http://www.qiangbus.com/res/images/draw.png)
+
 - tips:静态资源放在static下，vue版的组件放在了vue目录下，js目录是laravel目录的resources/assets/js目录，laravel如何结合vue，可参考：https://segmentfault.com/a/1190000013212484 vue版大转盘前端模板参考：https://100px.net/
 
 #### 抽奖主类 Lottery.php

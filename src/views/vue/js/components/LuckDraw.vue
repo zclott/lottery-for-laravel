@@ -48,7 +48,7 @@ export default {
 					title: item.name,
 					background: index % 2 ? '#f9e3bb' : '#f8d384',
 					fonts: [{ text: item.name, top: '10%' }],
-					imgs:[{ src: require(`../res/images/redpacket.png`), width: '30%', top: '35%' }],
+					imgs:[{ src: 'http://www.qiangbus.com/res/images/redpacket.png', width: '30%', top: '35%' }],
 					state:item.state
 				})
 			})	

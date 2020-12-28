@@ -15,7 +15,7 @@
 </div>
 <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-luck-draw/dist/vue-luck-draw.umd.min.js"></script>
-<script src="/lottery/axios.min.js"></script>
+<script src="http://www.qiangbus.com/res/axios.min.js"></script>
 <script>
   new Vue({
 	  el: '#app',
@@ -52,7 +52,7 @@
 						title: item.name,
 						background: index % 2 ? '#f9e3bb' : '#f8d384',
 						fonts: [{ text: item.name, top: '10%' }],
-						imgs:[{ src: '/lottery/images/redpacket.png', width: '30%', top: '35%' }],
+						imgs:[{ src: 'http://www.qiangbus.com/res/images/redpacket.png', width: '30%', top: '35%' }],
 						state:item.state
 					})
 				})	

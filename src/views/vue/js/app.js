@@ -18,7 +18,6 @@ window.Vue = require('vue');
 //import App from './app.vue'
 import VueRouter from 'vue-router';
 import iView from 'iview';
-import store from './store/'; 
 import 'iview/dist/styles/iview.css';
 import LuckDraw from 'vue-luck-draw'
 
@@ -40,6 +39,5 @@ const router = new VueRouter(RouterConfig);
 const app = new Vue({
     el: '#app',
     router: router,
-    store: store,
     //render: h => h(App)
 });

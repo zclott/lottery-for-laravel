@@ -35,7 +35,7 @@ canvas{
     left: 50%;
     top: 50%;
     margin: -44px 0 0 -30px;
-    background: url(/lottery/images/handler.png) no-repeat 50%;
+    background: url(http://www.qiangbus.com/res/images/handler.png) no-repeat 50%;
     background-size: contain;
 }
 </style>
@@ -47,8 +47,8 @@ canvas{
 		<canvas width="300" height="300" id="lottery"></canvas>
 	</div>
 </div>
-<script src="/lottery/jquery-1.11.1.min.js"></script>
-<script src="/lottery/Lottery.js"></script>
+<script src="http://www.qiangbus.com/res/jquery-1.11.1.min.js"></script>
+<script src="http://www.qiangbus.com/res//Lottery.js"></script>
 <script>
 var products = '' ;
 /*获取奖品列表*/

@@ -84,7 +84,7 @@ class LotteryController extends Controller
 		//vue版本 vue-luck-draw插件 通过 import 引入
 		//return view('vendor.lottery.lottery2');
 		//vue版本 vue-luck-draw插件 通过script 标签引入
-		return view('vendor.lottery.lottery3');
+		return view('vendor.lottery.lottery1');
 		
 	}
 }
