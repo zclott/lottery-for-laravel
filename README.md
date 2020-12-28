@@ -65,11 +65,11 @@ $ php artisan vendor:publish --provider=" Zclott\Lottery\LotteryServiceProvider"
 
 ```php
 	/**
-     * Lottery  lottery. 抽奖主方法
+	 * Lottery  lottery. 抽奖主方法
 	 * @param $uid int 用户id
 	 * @param $activityId int 活动id
 	 * @param $lotteryLimit int 抽奖次数
-    */
+	*/
 	public function lottery($activityId,$uid=null,$lotteryLimit=0)
 	{
 		$activityInfo = $this->activityInfo($activityId);
@@ -137,11 +137,11 @@ $ php artisan vendor:publish --provider=" Zclott\Lottery\LotteryServiceProvider"
 
 #### 抽奖算法
 
-```
+```php
 	/**
-     * Lottery  getRand. 抽奖算法
-     * @param array $proArr 所有奖品概率基数数组
-     */
+	* Lottery  getRand. 抽奖算法
+	* @param array $proArr 所有奖品概率基数数组
+	*/
 	protected function getRand( $proArr ) 
 	{
 		$result = '';
@@ -180,11 +180,11 @@ use Lottery;
 
 class LotteryController extends Controller
 {
-	/**
-     * Lottery  index. 抽奖方法
-	 * @param $uid int 用户id
-	 * @param $activityId int 活动id
-	 * @param $lotteryLimit int 抽奖次数
+    /**
+	* Lottery  index. 抽奖方法
+	* @param $uid int 用户id
+	* @param $activityId int 活动id
+	* @param $lotteryLimit int 抽奖次数
     */
     public function index(Request $request)
     {
