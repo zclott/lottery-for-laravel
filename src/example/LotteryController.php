@@ -79,12 +79,14 @@ class LotteryController extends Controller
 	public function show()
 	{
 		
-		//js版本大转盘
-		//return view('vendor.lottery.lottery1');
-		//vue版本 vue-luck-draw插件 通过 import 引入
-		//return view('vendor.lottery.lottery2');
-		//vue版本 vue-luck-draw插件 通过script 标签引入
+		//js版本大转盘 示例：http://xxx.com/lottery/show/?activityId=1
 		return view('vendor.lottery.lottery1');
+		/*vue版本 vue-luck-draw插件 通过 import 引入 
+		 ** 示例：http://xxx.com/lottery/show/#/activityId=1
+		*/
+		//return view('vendor.lottery.lottery2');
+		//vue版本 vue-luck-draw插件 通过script标签引入,示例：http://xxx.com/lottery/show/?activityId=1
+		//return view('vendor.lottery.lottery3');
 		
 	}
 }
