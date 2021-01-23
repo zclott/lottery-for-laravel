@@ -12,29 +12,29 @@ class Lottery
 	 * @param $activityId int 活动id
 	 * @param $lotteryLimit int 抽奖次数
     */
-	public function lottery($activityId,$uid=null,$lotteryLimit=0)
+	public static function lottery($activityId,$uid=null,$lotteryLimit=0)
 	{
-		$activityInfo = $this->activityInfo($activityId);
+		$activityInfo = self::activityInfo($activityId);
 		if(!$activityInfo){
 		
-			return $this->returnOut(0,'活动不存在');
+			return self::returnOut(0,'活动不存在');
 		}
-		if(!$this->checkActivitydate($activityInfo)){
+		if(!self::checkActivitydate($activityInfo)){
 		
-			return $this->returnOut(0,'今天不在活动时间范围哦');
+			return self::returnOut(0,'今天不在活动时间范围哦');
 		}
 		$prize = new LotteryPrize;
 		$prizeObj = $prize->getAllList($activityId);
 		if(!$prizeObj){
 
-			return $this->returnOut(0,'奖品不存在');
+			return self::returnOut(0,'奖品不存在');
 		}
 		//$lotteryLimit == 0时，不限抽奖次数。
 		if($uid && $lotteryLimit!=0){
 			//获取用户已抽奖次数，默认$lotteryTimes为0
 			$lotteryTimes = Redis::hget('lotterytimes', 'lotterytimes_'.$activityId.'_'.$uid)?Redis::hget('lotterytimes', 'lotterytimes_'.$activityId.'_'.$uid):0 ;
 			if( $lotteryTimes > $lotteryLimit-1){
-				return $this->returnOut(0,'抽奖次数已用完');
+				return self::returnOut(0,'抽奖次数已用完');
 			}
 			Redis::hincrby('lotterytimes','lotterytimes_'.$activityId.'_'.$uid,1); //记录用户抽奖次数
 			//如果是每日限制$lotteryLimit次，则设置第二天0点过期
@@ -44,13 +44,13 @@ class Lottery
 		foreach ($prizeObj as $obj) {
 			if( $obj->num != 0 && $obj->basenumber!=0) { //奖品数量有限,概率基数不为0时
 				//检查奖品数量是否达到抽取上限,达到则设置该奖项的中奖率为0。
-				if(!$this->checkPrizeCount($obj)){
+				if(!self::checkPrizeCount($obj)){
 					$obj->basenumber = 0;
 				}				
 			}
 			$proArr[] = $obj->basenumber;
 		}
-		$prizeIndex = $this->getRand($proArr); //根据概率获取奖品的索引
+		$prizeIndex = self::getRand($proArr); //根据概率获取奖品的索引
 		$result = $prizeObj[$prizeIndex]; //中奖奖品
 		$record = new LotteryRecord;
 		$addData = ['uid'=>$uid,'prizeId'=>$result->id,'prizename'=>$result->name,'activityId'=>$activityInfo->id,'activitytitle'=>$activityInfo->title,'state'=>$result->state,'lotterytime'=>time()];
@@ -73,13 +73,13 @@ class Lottery
 		$data['name'] = $result->name; //中奖奖品名称
 		$data['state'] = $result->state; //是否为空奖谢谢参与
 		$data['index'] = $prizeIndex; //中奖奖品的索引
-		return $this->returnOut(0,'',$data);
+		return self::returnOut(0,'',$data);
 	}
 	/**
      * Lottery  prizeList. 抽奖奖品列表
 	 * @param $activityId int 活动id
     */
-	public function prizeList( $activityId)
+	public static function prizeList( $activityId)
 	{
 		$prize = new LotteryPrize;
 		$prizeObj = $prize->getList($activityId);
@@ -95,7 +95,7 @@ class Lottery
 	 * @param $limit int 条数
 	 * @param $activityId int 活动id
     */
-	public function getPrizeRecord($activityId,$page=1,$limit=20)
+	public static function getPrizeRecord($activityId,$page=1,$limit=20)
 	{
 		
 		$record = new LotteryRecord;
@@ -110,7 +110,7 @@ class Lottery
 	 * Lottery  checkActivitydate. 检查活动时间
 	 * @param $activityInfo object 活动内容
 	*/
-	public function checkActivitydate($activityInfo)
+	public static function checkActivitydate($activityInfo)
 	{
 	
 		$timestamp = time();
@@ -128,7 +128,7 @@ class Lottery
 	 * Lottery  checkPrizeCount. 检查活动奖品数量,
 	 * @param $prizeInfo object 奖品
 	*/
-	public function checkPrizeCount($prizeInfo)
+	public static function checkPrizeCount($prizeInfo)
 	{
 		if($prizeInfo->lott_num >= $prizeInfo->num){	//超出数量设置该奖品的概率基数为0
 			$prize = new LotteryPrize;
@@ -141,7 +141,7 @@ class Lottery
 	 * Lottery  activityInfo. 活动详情
 	 * @param $activityId int 活动id
 	*/
-	public function activityInfo($activityId)
+	public static function activityInfo($activityId)
 	{
 		$activity = new LotteryActivity;
 		$activityInfo = $activity->getInfo($activityId);
@@ -155,7 +155,7 @@ class Lottery
      * Lottery  getRand. 抽奖算法
      * @param array $proArr 所有奖品概率基数数组
      */
-	protected function getRand( $proArr ) 
+	protected static function getRand( $proArr ) 
 	{
 		$result = '';
 		//$proSum抽奖概率基数之和
@@ -182,7 +182,7 @@ class Lottery
      * @param object $result 结果
 	 * @param string $message 提示信息
      */
-	protected function returnOut($code=0,$message='',$result=null) 
+	protected static function returnOut($code=0,$message='',$result=null) 
 	{
 		return ['code'=>0,'message'=>$message,'result'=>$result];
 	}
